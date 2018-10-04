@@ -1,4 +1,4 @@
-package com.gjaras.integracionwebservice;
+package com.gjaras.webserver;
 
 import org.slf4j.LoggerFactory;
 

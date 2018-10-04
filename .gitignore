@@ -13,3 +13,4 @@ nbactions.xml
 nb-configuration.xml
 target/
 hibernate.cfg.xml
+config.properties

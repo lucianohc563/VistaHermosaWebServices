@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.gjaras.integracionwebservice;
+package com.gjaras.util.tests;
 
 import com.gjaras.dao.FuncionarioDAO;
 import com.gjaras.dao.UsuarioDAO;

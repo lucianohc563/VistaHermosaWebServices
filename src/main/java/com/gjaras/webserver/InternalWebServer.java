@@ -1,5 +1,6 @@
-package com.gjaras.integracionwebservice;
+package com.gjaras.webserver;
 
+import com.gjaras.util.Config;
 import com.sun.jersey.spi.container.servlet.ServletContainer;
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
@@ -17,7 +18,7 @@ public class InternalWebServer {
 
     public InternalWebServer() throws Exception {
         LOG.info("Starting internal web services...");
-        server = new Server(81);
+        server = new Server(Integer.parseInt(Config.get("Port")));
 
         // handler de los servlets (webservices del paquete rest)
         ServletContextHandler context = new ServletContextHandler(server, "/", ServletContextHandler.SESSIONS);
@@ -27,7 +28,7 @@ public class InternalWebServer {
         sh.setInitParameter("com.sun.jersey.config.property.resourceConfigClass",
                 "com.sun.jersey.api.core.PackagesResourceConfig");
         sh.setInitParameter("com.sun.jersey.config.property.packages",
-                "com.gjaras.integracionwebservice");
+                "com.gjaras.groovyWS");
         sh.setInitParameter("com.sun.jersey.api.json.POJOMappingFeature", "true");
 
         context.addServlet(sh, "/vistahermosaws/*");
