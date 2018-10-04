@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 3, 2018 5:29:38 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.gjaras.pojos.Resolucion" table="RESOLUCION" schema="PRUEBA" optimistic-lock="version">
+        <id name="idResolucion" type="big_decimal">
+            <column name="ID_RESOLUCION" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="funcionario" class="com.gjaras.pojos.Funcionario" fetch="select">
+            <column name="RESOLVENTE_RUN_SIN_DV" precision="22" scale="0" />
+        </many-to-one>
+        <many-to-one name="solPermiso" class="com.gjaras.pojos.SolPermiso" fetch="select">
+            <column name="PERMISO_ID_PERMISO" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="fecResolucion" type="date">
+            <column name="FEC_RESOLUCION" length="7" not-null="true" />
+        </property>
+        <property name="estadoResolucion" type="big_decimal">
+            <column name="ESTADO_RESOLUCION" precision="22" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

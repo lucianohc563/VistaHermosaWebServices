@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 3, 2018 5:29:38 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.gjaras.pojos.Documento" table="DOCUMENTO" schema="PRUEBA" optimistic-lock="version">
+        <id name="idDocumento" type="big_decimal">
+            <column name="ID_DOCUMENTO" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="solPermiso" class="com.gjaras.pojos.SolPermiso" fetch="select">
+            <column name="PERMISO_ID_PERMISO" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="nombreDocumento" type="string">
+            <column name="NOMBRE_DOCUMENTO" length="30" not-null="true" />
+        </property>
+        <property name="formatoDocumento" type="string">
+            <column name="FORMATO_DOCUMENTO" length="20" not-null="true" />
+        </property>
+        <property name="fecCreacion" type="date">
+            <column name="FEC_CREACION" length="7" not-null="true" />
+        </property>
+        <property name="directorioDocumento" type="string">
+            <column name="DIRECTORIO_DOCUMENTO" length="254" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

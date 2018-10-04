@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 3, 2018 5:29:38 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.gjaras.pojos.Funcionario" table="FUNCIONARIO" schema="PRUEBA" optimistic-lock="version">
+        <id name="runSinDv" type="big_decimal">
+            <column name="RUN_SIN_DV" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="unidad" class="com.gjaras.pojos.Unidad" fetch="select">
+            <column name="UNIDAD_ID_UNIDAD" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="runDv" type="big_decimal">
+            <column name="RUN_DV" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="nomFuncionario" type="string">
+            <column name="NOM_FUNCIONARIO" length="30" not-null="true" />
+        </property>
+        <property name="apPaterno" type="string">
+            <column name="AP_PATERNO" length="30" not-null="true" />
+        </property>
+        <property name="apMaterno" type="string">
+            <column name="AP_MATERNO" length="30" not-null="true" />
+        </property>
+        <property name="fecNacimiento" type="date">
+            <column name="FEC_NACIMIENTO" length="7" not-null="true" />
+        </property>
+        <property name="correo" type="string">
+            <column name="CORREO" length="100" not-null="true" unique="true" />
+        </property>
+        <property name="direcFuncionario" type="string">
+            <column name="DIREC_FUNCIONARIO" length="80" not-null="true" />
+        </property>
+        <property name="tipoFuncionario" type="string">
+            <column name="TIPO_FUNCIONARIO" length="30" not-null="true" />
+        </property>
+        <property name="habilitado" type="boolean">
+            <column name="HABILITADO" precision="1" scale="0" not-null="true" />
+        </property>
+        <set name="usuarios" table="USUARIO" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="FUNCIONARIO_RUN_SIN_DV" precision="22" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.gjaras.pojos.Usuario" />
+        </set>
+        <set name="resolucions" table="RESOLUCION" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="RESOLVENTE_RUN_SIN_DV" precision="22" scale="0" />
+            </key>
+            <one-to-many class="com.gjaras.pojos.Resolucion" />
+        </set>
+        <set name="solPermisosForAutorizanteRunSinDv" table="SOL_PERMISO" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="AUTORIZANTE_RUN_SIN_DV" precision="22" scale="0" />
+            </key>
+            <one-to-many class="com.gjaras.pojos.SolPermiso" />
+        </set>
+        <set name="solPermisosForSolicitanteRunSinDv" table="SOL_PERMISO" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="SOLICITANTE_RUN_SIN_DV" precision="22" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.gjaras.pojos.SolPermiso" />
+        </set>
+        <set name="unidads" table="UNIDAD" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="JEFE_UNIDAD_RUN_SIN_DV" precision="22" scale="0" />
+            </key>
+            <one-to-many class="com.gjaras.pojos.Unidad" />
+        </set>
+    </class>
+</hibernate-mapping>

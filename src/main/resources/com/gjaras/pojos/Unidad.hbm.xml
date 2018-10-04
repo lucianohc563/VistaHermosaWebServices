@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 3, 2018 5:29:38 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.gjaras.pojos.Unidad" table="UNIDAD" schema="PRUEBA" optimistic-lock="version">
+        <id name="idUnidad" type="big_decimal">
+            <column name="ID_UNIDAD" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="funcionario" class="com.gjaras.pojos.Funcionario" fetch="select">
+            <column name="JEFE_UNIDAD_RUN_SIN_DV" precision="22" scale="0" />
+        </many-to-one>
+        <many-to-one name="unidad" class="com.gjaras.pojos.Unidad" fetch="select">
+            <column name="UNIDAD_PADRE_ID_UNIDAD" precision="22" scale="0" />
+        </many-to-one>
+        <property name="nombreUnidad" type="string">
+            <column name="NOMBRE_UNIDAD" length="30" not-null="true" unique="true" />
+        </property>
+        <property name="descripcionUnidad" type="string">
+            <column name="DESCRIPCION_UNIDAD" length="254" not-null="true" />
+        </property>
+        <property name="direccionUnidad" type="string">
+            <column name="DIRECCION_UNIDAD" length="80" not-null="true" />
+        </property>
+        <property name="habilitado" type="boolean">
+            <column name="HABILITADO" precision="1" scale="0" not-null="true" />
+        </property>
+        <set name="funcionarios" table="FUNCIONARIO" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="UNIDAD_ID_UNIDAD" precision="22" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.gjaras.pojos.Funcionario" />
+        </set>
+        <set name="unidads" table="UNIDAD" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="UNIDAD_PADRE_ID_UNIDAD" precision="22" scale="0" />
+            </key>
+            <one-to-many class="com.gjaras.pojos.Unidad" />
+        </set>
+    </class>
+</hibernate-mapping>

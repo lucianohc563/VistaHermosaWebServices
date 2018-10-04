@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 3, 2018 5:29:38 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.gjaras.pojos.SolPermiso" table="SOL_PERMISO" schema="PRUEBA" optimistic-lock="version">
+        <id name="idPermiso" type="big_decimal">
+            <column name="ID_PERMISO" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="funcionarioByAutorizanteRunSinDv" class="com.gjaras.pojos.Funcionario" fetch="select">
+            <column name="AUTORIZANTE_RUN_SIN_DV" precision="22" scale="0" />
+        </many-to-one>
+        <many-to-one name="funcionarioBySolicitanteRunSinDv" class="com.gjaras.pojos.Funcionario" fetch="select">
+            <column name="SOLICITANTE_RUN_SIN_DV" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="tipoPermiso" type="string">
+            <column name="TIPO_PERMISO" length="30" not-null="true" />
+        </property>
+        <property name="estado" type="big_decimal">
+            <column name="ESTADO" precision="22" scale="0" />
+        </property>
+        <property name="fechaInicio" type="date">
+            <column name="FECHA_INICIO" length="7" not-null="true" />
+        </property>
+        <property name="fechaTermino" type="date">
+            <column name="FECHA_TERMINO" length="7" not-null="true" />
+        </property>
+        <property name="fechaSolicitud" type="date">
+            <column name="FECHA_SOLICITUD" length="7" not-null="true" />
+        </property>
+        <property name="descPermiso" type="string">
+            <column name="DESC_PERMISO" length="254" not-null="true" />
+        </property>
+        <set name="resolucions" table="RESOLUCION" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PERMISO_ID_PERMISO" precision="22" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.gjaras.pojos.Resolucion" />
+        </set>
+        <set name="documentos" table="DOCUMENTO" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PERMISO_ID_PERMISO" precision="22" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.gjaras.pojos.Documento" />
+        </set>
+    </class>
+</hibernate-mapping>
