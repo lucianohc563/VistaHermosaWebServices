@@ -18,7 +18,7 @@ public class InternalWebServer {
 
     public InternalWebServer() throws Exception {
         LOG.info("Starting internal web services...");
-        server = new Server(Integer.parseInt(Config.get("Port")));
+        server = new Server(Integer.parseInt(Config.get("PORT")));
 
         // handler de los servlets (webservices del paquete rest)
         ServletContextHandler context = new ServletContextHandler(server, "/", ServletContextHandler.SESSIONS);

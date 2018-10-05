@@ -34,6 +34,11 @@ public class Usuario  implements java.io.Serializable {
        this.tipoUsuario = tipoUsuario;
     }
     
+    public Usuario(String nombreUsuario, String clave) {
+       this.nombreUsuario = nombreUsuario;
+       this.clave = clave;
+    }
+    
     public BigDecimal getIdUsuario() {
         return this.idUsuario;
     }

@@ -14,3 +14,4 @@ nb-configuration.xml
 target/
 hibernate.cfg.xml
 config.properties
+dependency-reduced-pom.xml

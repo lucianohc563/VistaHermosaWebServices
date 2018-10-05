@@ -27,6 +27,12 @@
                     <compilerId>groovy-eclipse-compiler</compilerId>
                 </configuration>
             </plugin>
+             <plugin>
+                <groupId>org.codehaus.groovy</groupId>
+                <artifactId>groovy-eclipse-compiler</artifactId>
+                <version>2.9.2-01</version>
+                <extensions>true</extensions>
+            </plugin>
             <!--<plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
@@ -40,7 +46,7 @@
                 </executions>
                 <configuration>
                     <executable>maven</executable>
-                    <mainClass>com.gjaras.integracionwebservice.StartServer</mainClass>
+                    <mainClass>com.gjaras.webserver.StartServer</mainClass>
                 </configuration>
             </plugin>-->
             <plugin>
@@ -68,7 +74,7 @@
                             <transformers>
                                 <transformer
                                     implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>com.gjaras.integracionwebservice.StartServer</mainClass>
+                                    <mainClass>com.gjaras.webserver.StartServer</mainClass>
                                 </transformer>
                                 <transformer
                                     implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
